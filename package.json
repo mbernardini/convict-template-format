@@ -1,6 +1,6 @@
 {
   "name": "convict-template-format",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Adds a template format for mozilla/node-convict package",
   "main": "dist/index.js",
   "scripts": {
