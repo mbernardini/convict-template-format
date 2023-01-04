@@ -11,6 +11,11 @@ npm install convict-template-format
 
 ## Usage
 ### TypeScript
+
+The `template` type can be added to a convict schema as shown in the example and
+the value will be replaced when calling the `replaceTemplateValues` function.
+
+Example:
 ```
 import convict from "convict";
 import templateFormat, { replaceTemplateValues } from "convict-template-format";
@@ -32,3 +37,25 @@ replaceTemplateValues(config);
 
 config.validate();
 ```
+
+Templates can reference nested values as well as other template values:
+```
+const config = convict({
+  deployment: {
+    format: String,
+    default: "staging"
+  },
+  serverA : {
+    host: {
+      format: "template",
+      default: "https://servera.${deployment}.test.com"
+    },
+    health: {
+      format: "template",
+      default: "${serverA.host}/health"
+    }
+  }
+});
+```
+
+Circular dependenancies will throw an Error,
