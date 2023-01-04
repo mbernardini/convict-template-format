@@ -19,5 +19,6 @@
   },
   "dependencies": {
     "convict": "^6.2.3"
-  }
+  },
+  "repository": "github:mbernardini/convict-template-format"
 }
